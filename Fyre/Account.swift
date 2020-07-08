@@ -15,7 +15,7 @@ struct Account: Identifiable {
     let type: AccountType
     var name: String
     var assets = Set<Asset>()
-    var wallet: [Asset: (amount: Double, investment: Double)] = [:]
+    var values: [Asset: (amount: Double, investment: Double)] = [:]
     
     init(_ type: AccountType, _ name: String) {
         self.type = type
@@ -26,12 +26,12 @@ struct Account: Identifiable {
         let asset = self.assets.insert(asset)
         
         if asset.0 {
-            let prevAmount = wallet[asset.1]?.amount
-            let prevPrice = wallet[asset.1]?.investment
+            let prevAmount = values[asset.1]?.amount
+            let prevPrice = values[asset.1]?.investment
             
-            wallet[asset.1] = (amount + prevAmount!, price + prevPrice!)
+            values[asset.1] = (amount + prevAmount!, price + prevPrice!)
         } else {
-            wallet[asset.1] = (amount, price)
+            values[asset.1] = (amount, price)
         }
     }
     
@@ -39,7 +39,24 @@ struct Account: Identifiable {
         let asset = self.assets.remove(asset)
         
         if asset != nil {
-            wallet[asset!] = nil
+            values[asset!] = nil
         }
     }
+    
+    func value() -> Double {
+        return 0.00
+    }
 }
+
+struct Wallet {
+    var wallet = [Account]()
+    
+    init(_ accounts:[Account]) {
+        self.wallet += accounts
+    }
+}
+
+let testCash:Cash = Cash("USD")
+var testAccount1:Account = Account(.Savings, "Savings Account")
+var testAccount2:Account = Account(.Brokerage, "Brokerage Account")
+var testWallet:Wallet = Wallet([testAccount1, testAccount2])

@@ -13,6 +13,8 @@
 		0DB2AF1724B54E5D00092945 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2AF1624B54E5D00092945 /* Preview Assets.xcassets */; };
 		0DB2AF2024B54E9200092945 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF1F24B54E9200092945 /* Asset.swift */; };
 		0DB2AF2224B54EBB00092945 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF2124B54EBB00092945 /* Account.swift */; };
+		0DDE1FCA24B5999A00AC6F1F /* AssetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE1FC924B5999A00AC6F1F /* AssetList.swift */; };
+		0DF7FE9C24B573E800647809 /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7FE9B24B573E800647809 /* AccountListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		0DB2AF1924B54E5D00092945 /* Fyre.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fyre.entitlements; sourceTree = "<group>"; };
 		0DB2AF1F24B54E9200092945 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		0DB2AF2124B54EBB00092945 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		0DDE1FC924B5999A00AC6F1F /* AssetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetList.swift; sourceTree = "<group>"; };
+		0DF7FE9B24B573E800647809 /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +63,9 @@
 			children = (
 				0DB2AF0F24B54E5C00092945 /* FyreApp.swift */,
 				0DB2AF1124B54E5C00092945 /* ContentView.swift */,
+				0DF7FE9B24B573E800647809 /* AccountListView.swift */,
 				0DB2AF1F24B54E9200092945 /* Asset.swift */,
+				0DDE1FC924B5999A00AC6F1F /* AssetList.swift */,
 				0DB2AF2124B54EBB00092945 /* Account.swift */,
 				0DB2AF1324B54E5D00092945 /* Assets.xcassets */,
 				0DB2AF1824B54E5D00092945 /* Info.plist */,
@@ -150,6 +156,8 @@
 				0DB2AF2224B54EBB00092945 /* Account.swift in Sources */,
 				0DB2AF1224B54E5C00092945 /* ContentView.swift in Sources */,
 				0DB2AF1024B54E5C00092945 /* FyreApp.swift in Sources */,
+				0DDE1FCA24B5999A00AC6F1F /* AssetList.swift in Sources */,
+				0DF7FE9C24B573E800647809 /* AccountListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
