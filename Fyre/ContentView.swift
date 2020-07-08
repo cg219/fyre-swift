@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Fyre
-//
-//  Created by Clemente Gomez on 7/7/20.
-//
-
 import SwiftUI
 
 struct ContentView: View {
