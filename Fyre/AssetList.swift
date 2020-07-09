@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AssetList_Previews: PreviewProvider {
     static var previews: some View {
-        AssetList()
+        AssetList(wallet: Wallet())
     }
 }
 
@@ -12,24 +12,43 @@ let assetImage: [AssetType: String] = [
     AssetType.Stock: "mail.fill"
 ]
 
-struct AssetList: View {
+func createStuff() -> Account {
     let cash = Cash("US Dollar")
     let stock = Stock("Apple Inc", 372.69, "AAPL")
     let crypto = Crypto("Bitcoin", 9248.45, "BTC")
+    var account:Account = Account("Brokerage", .Brokerage)
+    
+    account.assets.append(cash)
+    account.assets.append(stock)
+    account.assets.append(crypto)
+    
+    return account
+}
+
+struct AssetList: View {
+    var account = createStuff()
+    var wallet: Wallet
     
     var body: some View {
         VStack {
-            CashItem(asset: cash)
-            StockItem(asset: stock)
-            CryptoItem(asset: crypto)
+            ForEach(wallet.accounts, id: \.self) { account in
+                ForEach(account.assets, id: \.id) { asset in
+                    switch asset.type {
+                        case .Cash:
+                            CashItem(asset: asset as! Cash)
+                        case .Stock:
+                            StockItem(asset: asset as! Stock)
+                        case .Crypto:
+                            CryptoItem(asset: asset as! Crypto)
+                    }
+                }
+            }
         }
-        
     }
 }
 
 struct CashItem: View {
-    let asset:Cash
-    let value = 19039.34
+    let asset: Cash
     
     var body: some View {
         HStack {
@@ -46,7 +65,7 @@ struct CashItem: View {
                     .fontWeight(.bold)
                 .padding(.trailing, 10)
                 Spacer()
-                Text("\(String(format: "%.2f", value) )")
+                Text("\(String(format: "%.2f", asset.value * asset.amount) )")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
             }
@@ -58,10 +77,7 @@ struct CashItem: View {
 }
 
 struct StockItem: View {
-    let asset:Stock
-    let shares = 12.50
-    let investment = 5000.00
-    var basis =  5000 / 12.50
+    let asset: Stock
     
     var body: some View {
         HStack {
@@ -71,10 +87,10 @@ struct StockItem: View {
                     .font(.largeTitle)
                 .padding(.trailing, 10)
                 VStack(alignment: .leading) {
-                    Text("\(String(format: "%.2f", shares) )")
+                    Text("\(String(format: "%.2f", asset.amount) )")
                         .font(.caption)
                         .fontWeight(.medium)
-                    Text("$\(String(format: "%.2f", basis) )")
+                    Text("$\(String(format: "%.2f", asset.cost / asset.amount) )")
                         .font(.caption2)
                         .fontWeight(.semibold)
                 }
@@ -93,10 +109,10 @@ struct StockItem: View {
                 }
                 Spacer()
                 VStack(alignment: .trailing) {
-                    Text("\(String(format: "%.2f", shares * asset.value) )")
+                    Text("\(String(format: "%.2f", asset.amount * asset.value) )")
                         .font(.largeTitle)
                         .fontWeight(.semibold)
-                    Text("\(String(format: "%.2f", investment) )")
+                    Text("\(String(format: "%.2f", asset.cost) )")
                         .font(.caption)
                         .fontWeight(.medium)
                 }
@@ -110,10 +126,7 @@ struct StockItem: View {
 }
 
 struct CryptoItem: View {
-    let asset:Crypto
-    let amount = 0.1278
-    let investment = 675.00
-    var basis =  675 / 0.1278
+    let asset: Crypto
     
     var body: some View {
         HStack {
@@ -122,10 +135,10 @@ struct CryptoItem: View {
                     .foregroundColor(.yellow)
                     .font(.largeTitle)
                 VStack(alignment: .leading) {
-                    Text("\(String(format: "%.4f", amount) )")
+                    Text("\(String(format: "%.4f", asset.amount) )")
                         .font(.caption)
                         .fontWeight(.medium)
-                    Text("$\(String(format: "%.2f", basis) )")
+                    Text("$\(String(format: "%.2f", asset.cost / asset.amount) )")
                         .font(.caption2)
                         .fontWeight(.semibold)
                 }
@@ -145,10 +158,10 @@ struct CryptoItem: View {
                 .padding(.trailing, 10)
                 Spacer()
                 VStack(alignment: .trailing) {
-                    Text("\(String(format: "%.2f", amount * asset.value) )")
+                    Text("\(String(format: "%.2f", asset.amount * asset.value) )")
                         .font(.largeTitle)
                         .fontWeight(.semibold)
-                    Text("\(String(format: "%.2f", investment) )")
+                    Text("\(String(format: "%.2f", asset.cost) )")
                         .font(.caption)
                         .fontWeight(.medium)
                 }

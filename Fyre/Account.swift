@@ -10,53 +10,30 @@ enum AccountType {
     case Property
 }
 
-struct Account: Identifiable {
-    let id: UUID = UUID()
+struct AssetHolder: Identifiable {
+    var id = UUID()
+    var asset: Asset
+    var amount: Double
+    var price: Double
+}
+
+struct Account: Hashable {
+    var id = UUID()
     let type: AccountType
     var name: String
-    var assets = Set<Asset>()
-    var values: [Asset: (amount: Double, investment: Double)] = [:]
+    var assets: [Asset]
     
-    init(_ type: AccountType, _ name: String) {
-        self.type = type
+    init(_ name: String, _ type: AccountType = .Savings) {
         self.name = name
+        self.type = type
+        self.assets = []
     }
     
-    mutating func update(_ asset: Asset, _ amount: Double, _ price: Double) {
-        let asset = self.assets.insert(asset)
-        
-        if asset.0 {
-            let prevAmount = values[asset.1]?.amount
-            let prevPrice = values[asset.1]?.investment
-            
-            values[asset.1] = (amount + prevAmount!, price + prevPrice!)
-        } else {
-            values[asset.1] = (amount, price)
-        }
+    static func == (lhs: Account, rhs:Account) -> Bool {
+        return lhs.id == rhs.id
     }
     
-    mutating func delete(_ asset: Asset) {
-        let asset = self.assets.remove(asset)
-        
-        if asset != nil {
-            values[asset!] = nil
-        }
-    }
-    
-    func value() -> Double {
-        return 0.00
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
-
-struct Wallet {
-    var wallet = [Account]()
-    
-    init(_ accounts:[Account]) {
-        self.wallet += accounts
-    }
-}
-
-let testCash:Cash = Cash("USD")
-var testAccount1:Account = Account(.Savings, "Savings Account")
-var testAccount2:Account = Account(.Brokerage, "Brokerage Account")
-var testWallet:Wallet = Wallet([testAccount1, testAccount2])

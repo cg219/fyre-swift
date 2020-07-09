@@ -1,7 +1,6 @@
 import Foundation
 
 enum AssetType: String {
-    case Basic = "Basic"
     case Stock = "Stock"
     case Cash = "Cash"
     case Crypto = "Crypto"
@@ -22,57 +21,67 @@ enum StockSector: String {
     case Other = "Other"
 }
 
-class Asset: Hashable {
-    let id: UUID = UUID()
+protocol Asset {
+    var name: String { get }
+    var type: AssetType { get }
+    var value: Double { get set }
+    var amount: Double { get set }
+    var cost: Double { get set }
+    var id: UUID { get set }
+}
+
+struct Cash: Asset, Identifiable {
+    var id = UUID()
+    let currency: String
     let name: String
-    let type: AssetType
+    let type: AssetType = .Cash
     var value: Double
+    var cost: Double
+    var amount: Double
     
-    init(_ name: String, _ value: Double, _ type:AssetType = .Basic) {
+    init(_ name: String, _ amount: Double = 0, _ currency: String = "USD") {
         self.name = name
-        self.value = value
-        self.type = type;
-    }
-    
-    func update(value: Double) -> Void {
-        self.value = value
-        print("Value Updated")
-    }
-    
-    static func == (lhs: Asset, rhs: Asset) -> Bool {
-        return lhs.id as AnyObject === rhs.id as AnyObject
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+        self.currency = currency
+        self.value = 1
+        self.cost = amount
+        self.amount = amount
     }
 }
 
-class Stock: Asset {
+struct Stock: Asset, Identifiable {
+    var id = UUID()
+    let name: String
+    let type: AssetType = .Stock
     let ticker: String
     let sector: StockSector
+    var value: Double
+    var cost: Double
+    var amount: Double
     
-    init(_ name: String, _ value: Double, _ ticker: String, _ sector: StockSector = StockSector.Other) {
+    init(_ name: String, _ value: Double, _ ticker: String, _ cost: Double = 0, _ amount: Double = 0, _ sector: StockSector = StockSector.Other) {
         self.ticker = ticker
         self.sector = sector
-        super.init(name, value, AssetType.Stock)
+        self.name = name
+        self.value = value
+        self.cost = cost
+        self.amount = amount
     }
 }
 
-class Cash: Asset {
+struct Crypto: Asset, Identifiable {
+    var id = UUID()
     let currency: String
+    let name: String
+    let type: AssetType = .Crypto
+    var value: Double
+    var cost: Double
+    var amount: Double
     
-    init(_ name: String, _ currency:String = "USD") {
+    init(_ name: String, _ value: Double, _ currency: String, _ cost: Double = 0, _ amount: Double = 0) {
         self.currency = currency
-        super.init(name, 1, AssetType.Cash)
-    }
-}
-
-class Crypto: Asset {
-    let currency: String
-    
-    init(_ name: String, _ value: Double, _ currency: String) {
-        self.currency = currency
-        super.init(name, value, AssetType.Crypto)
+        self.name = name
+        self.value = value
+        self.cost = cost
+        self.amount = amount
     }
 }
