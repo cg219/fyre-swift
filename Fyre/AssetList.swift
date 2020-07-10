@@ -12,21 +12,7 @@ let assetImage: [AssetType: String] = [
     AssetType.Stock: "mail.fill"
 ]
 
-func createStuff() -> Account {
-    let cash = Cash("US Dollar")
-    let stock = Stock("Apple Inc", 372.69, "AAPL")
-    let crypto = Crypto("Bitcoin", 9248.45, "BTC")
-    var account:Account = Account("Brokerage", .Brokerage)
-    
-    account.assets.append(cash)
-    account.assets.append(stock)
-    account.assets.append(crypto)
-    
-    return account
-}
-
 struct AssetList: View {
-    var account = createStuff()
     var wallet: Wallet
     
     var body: some View {
