@@ -16,20 +16,48 @@ struct AssetList: View {
     var wallet: Wallet
     
     var body: some View {
-        VStack {
+        List {
             ForEach(wallet.accounts, id: \.self) { account in
-                ForEach(account.assets, id: \.id) { asset in
-                    switch asset.type {
-                        case .Cash:
-                            CashItem(asset: asset as! Cash)
-                        case .Stock:
-                            StockItem(asset: asset as! Stock)
-                        case .Crypto:
-                            CryptoItem(asset: asset as! Crypto)
+                Section(header: SectionView(account: account)) {
+                    ForEach(account.assets, id: \.id) { asset in
+                        switch asset.type {
+                            case .Cash:
+                                CashItem(asset: asset as! Cash)
+                            case .Stock:
+                                StockItem(asset: asset as! Stock)
+                            case .Crypto:
+                                CryptoItem(asset: asset as! Crypto)
+                        }
                     }
+                    .cornerRadius(10)
                 }
             }
         }
+        .listStyle(PlainListStyle())
+        
+    }
+}
+
+struct SectionView: View {
+    let account: Account
+    
+    var body: some View {
+        HStack(alignment: .bottom) {
+            Text("\(account.name)")
+                .font(.headline)
+                .fontWeight(.bold)
+                .padding(.top, 5)
+                .textCase(.uppercase)
+            Spacer()
+            Text("$\(String(format: "%.2f", account.value))")
+                .font(.title2)
+                .fontWeight(.medium)
+                .foregroundColor(.green)
+                .kerning(0.6)
+        }
+        .padding(.all, 10)
+        .padding(.top, 20)
+        .cornerRadius(7)
     }
 }
 

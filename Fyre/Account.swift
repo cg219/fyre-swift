@@ -22,6 +22,13 @@ struct Account: Hashable {
     let type: AccountType
     var name: String
     var assets: [Asset]
+    var value: Double {
+        var currentValue: Double = 0
+        assets.forEach { asset in
+            currentValue += (asset.amount * asset.value)
+        }
+        return currentValue
+    }
     
     init(_ name: String, _ type: AccountType = .Savings) {
         self.name = name
