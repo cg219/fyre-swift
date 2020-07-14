@@ -37,7 +37,7 @@ struct Cash: Asset, Identifiable {
     let type: AssetType = .Cash
     var value: Double
     var cost: Double
-    var amount: Double
+    public var amount: Double
     
     init(_ name: String, _ amount: Double = 0, _ currency: String = "USD") {
         self.name = name
@@ -56,7 +56,7 @@ struct Stock: Asset, Identifiable {
     let sector: StockSector
     var value: Double
     var cost: Double
-    var amount: Double
+    public var amount: Double
     
     init(_ name: String, _ value: Double, _ ticker: String, _ cost: Double = 0, _ amount: Double = 0, _ sector: StockSector = StockSector.Other) {
         self.ticker = ticker
@@ -75,7 +75,7 @@ struct Crypto: Asset, Identifiable {
     let type: AssetType = .Crypto
     var value: Double
     var cost: Double
-    var amount: Double
+    public var amount: Double
     
     init(_ name: String, _ value: Double, _ currency: String, _ cost: Double = 0, _ amount: Double = 0) {
         self.currency = currency

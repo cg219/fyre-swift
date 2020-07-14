@@ -52,7 +52,7 @@ struct SectionView: View {
                 .padding(.top, 5)
                 .textCase(.uppercase)
             Spacer()
-            Text("$\(String(format: "%.2f", account.value))")
+            Text("$\(account.value.currency)")
                 .font(.title2)
                 .fontWeight(.medium)
                 .foregroundColor(.green)
@@ -82,7 +82,7 @@ struct CashItem: View {
                     .fontWeight(.bold)
                 .padding(.trailing, 10)
                 Spacer()
-                Text("\(String(format: "%.2f", asset.value * asset.amount) )")
+                Text((asset.value * asset.amount).currency)
                     .font(.largeTitle)
                     .fontWeight(.semibold)
             }
@@ -104,15 +104,15 @@ struct StockItem: View {
                     .font(.largeTitle)
                 .padding(.trailing, 10)
                 VStack(alignment: .leading) {
-                    Text("\(String(format: "%.2f", asset.amount) )")
+                    Text(asset.amount.currency)
                         .font(.caption)
                         .fontWeight(.medium)
-                    Text("$\(String(format: "%.2f", asset.cost / asset.amount) )")
+                    Text((asset.value * asset.amount).currency)
                         .font(.caption2)
                         .fontWeight(.semibold)
                 }
                 .padding(.trailing, 10)
-                Text("\(String(format: "%.2f", asset.value) )")
+                Text(asset.value.currency)
                     .font(.headline)
                     .fontWeight(.medium)
                     .padding(.trailing, 10)
@@ -126,10 +126,10 @@ struct StockItem: View {
                 }
                 Spacer()
                 VStack(alignment: .trailing) {
-                    Text("\(String(format: "%.2f", asset.amount * asset.value) )")
+                    Text((asset.value * asset.amount).currency)
                         .font(.largeTitle)
                         .fontWeight(.semibold)
-                    Text("\(String(format: "%.2f", asset.cost) )")
+                    Text(asset.cost.currency)
                         .font(.caption)
                         .fontWeight(.medium)
                 }
@@ -152,15 +152,15 @@ struct CryptoItem: View {
                     .foregroundColor(.yellow)
                     .font(.largeTitle)
                 VStack(alignment: .leading) {
-                    Text("\(String(format: "%.4f", asset.amount) )")
+                    Text(asset.amount.currency)
                         .font(.caption)
                         .fontWeight(.medium)
-                    Text("$\(String(format: "%.2f", asset.cost / asset.amount) )")
+                    Text("$\((asset.cost / asset.amount).currency)")
                         .font(.caption2)
                         .fontWeight(.semibold)
                 }
                 .padding(.trailing, 10)
-                Text("\(String(format: "%.2f", asset.value) )")
+                Text(asset.value.currency)
                     .font(.headline)
                     .fontWeight(.medium)
                     .padding(.trailing, 10)
@@ -175,10 +175,10 @@ struct CryptoItem: View {
                 .padding(.trailing, 10)
                 Spacer()
                 VStack(alignment: .trailing) {
-                    Text("\(String(format: "%.2f", asset.amount * asset.value) )")
+                    Text((asset.value * asset.amount).currency)
                         .font(.largeTitle)
                         .fontWeight(.semibold)
-                    Text("\(String(format: "%.2f", asset.cost) )")
+                    Text(asset.cost.currency)
                         .font(.caption)
                         .fontWeight(.medium)
                 }
