@@ -48,7 +48,13 @@ struct Account: Hashable {
             if currentAsset.type != type { continue }
             
             switch type {
-            case .Cash, .Crypto:
+            case .Crypto:
+                if (checkAsset as! Crypto).currency == (currentAsset as! Crypto).currency {
+                    exists = true
+                    existingIndex = index
+                    break
+                }
+            case .Cash:
                 if (checkAsset as! Cash).currency == (currentAsset as! Cash).currency {
                     exists = true
                     existingIndex = index

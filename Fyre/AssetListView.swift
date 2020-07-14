@@ -1,8 +1,11 @@
 import SwiftUI
 
-struct AssetList_Previews: PreviewProvider {
+struct AssetListView_Previews: PreviewProvider {
+    static var wallet = Wallet()
+    
     static var previews: some View {
-        AssetList(wallet: Wallet())
+        AssetListView()
+            .environmentObject(wallet)
     }
 }
 
@@ -12,8 +15,8 @@ let assetImage: [AssetType: String] = [
     AssetType.Stock: "mail.fill"
 ]
 
-struct AssetList: View {
-    var wallet: Wallet
+struct AssetListView: View {
+    @EnvironmentObject var wallet: Wallet
     
     var body: some View {
         List {

@@ -85,3 +85,25 @@ struct Crypto: Asset, Identifiable {
         self.amount = amount
     }
 }
+
+let account1:[Asset] = [
+    Stock("Apple Inc", 372.69, "AAPL", 3000, 12, .Tech),
+    Stock("Tesla", 1372.69, "TSLA", 3000, 4, .Tech),
+    Stock("Facebook", 1372.69, "FB", 3000, 19, .Tele),
+    Cash("US Dollar", 233)
+]
+
+let account2:[Asset] = [
+    Stock("Facebook", 1372.69, "FB", 1372.69, 1, .Tele),
+    Cash("US Dollar", 4312)
+]
+
+let account3:[Asset] = [
+    Crypto("Bitcoin", 9248.45, "BTC", 1000, 0.12),
+    Crypto("Litecoin", 43.45, "LTC", 1300, 20),
+    Crypto("Bitcoin Cash", 234.43, "BCH", 500, 2)
+]
+
+let account4:[Asset] = [
+    Cash("US Dollar", 19320)
+]
