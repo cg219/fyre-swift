@@ -1,18 +1,20 @@
 import SwiftUI
 
+struct EditAssetView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditAssetView()
+            .environmentObject(Wallet())
+    }
+}
+
 struct EditAssetView: View {
-    @State var asset: Asset = account4[0]
+    @EnvironmentObject var wallet: Wallet
     
     var body: some View {
-        HStack {
-            switch asset.type {
-            case .Cash:
-                EditCashView(cash: asset as! Cash)
-            case .Crypto:
-                EditCryptoView(coin: asset as! Crypto)
-            case .Stock:
-                EditStockView(stock: asset as! Stock)
-            }
+        switch  wallet.currentAsset!.type {
+        case .Cash: return AnyView(EditCashView(cash: wallet.currentAsset as! Cash))
+        case .Crypto: return AnyView(EditCryptoView(coin:  wallet.currentAsset as! Crypto))
+        case .Stock: return AnyView(EditStockView(stock:  wallet.currentAsset as! Stock))
         }
     }
 }
@@ -93,16 +95,10 @@ struct EditCashView: View {
                 VStack {
                     Text("Amount")
                         .font(.caption)
-                    TextField("Amount", value: $cash.amount, formatter: NumberFormatter.double)
+                    TextField("Amount", value: $cash.amount, formatter: NumberFormatter.currency)
                 }
                 Spacer()
             }
         }
-    }
-}
-
-struct EditAssetView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditAssetView()
     }
 }

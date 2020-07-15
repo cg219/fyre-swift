@@ -1,11 +1,9 @@
 import SwiftUI
 
 struct AssetListView_Previews: PreviewProvider {
-    static var wallet = Wallet()
-    
     static var previews: some View {
         AssetListView()
-            .environmentObject(wallet)
+            .environmentObject(Wallet())
     }
 }
 
@@ -14,6 +12,13 @@ let assetImage: [AssetType: String] = [
     AssetType.Crypto: "bitcoinsign.square.fill",
     AssetType.Stock: "mail.fill"
 ]
+
+func editItem(asset: Asset, account: Account, wallet: Wallet) {
+    wallet.currentAsset = asset
+    wallet.currentAccount = account
+    
+    print("\(asset)")
+}
 
 struct AssetListView: View {
     @EnvironmentObject var wallet: Wallet
@@ -26,10 +31,13 @@ struct AssetListView: View {
                         switch asset.type {
                             case .Cash:
                                 CashItem(asset: asset as! Cash)
+                                    .onTapGesture { editItem(asset: asset, account: account, wallet: wallet) }
                             case .Stock:
                                 StockItem(asset: asset as! Stock)
+                                    .onTapGesture { editItem(asset: asset, account: account, wallet: wallet) }
                             case .Crypto:
                                 CryptoItem(asset: asset as! Crypto)
+                                    .onTapGesture { editItem(asset: asset, account: account, wallet: wallet) }
                         }
                     }
                     .cornerRadius(10)

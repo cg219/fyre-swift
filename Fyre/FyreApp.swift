@@ -6,8 +6,14 @@ struct FyreApp: App {
         
     var body: some Scene {
         WindowGroup {
-            AssetListView()
-                .environmentObject(wallet)
+            HStack {
+                if wallet.currentAsset != nil {
+                    EditAssetView()
+                        .environmentObject(wallet)
+                }
+                AssetListView()
+                    .environmentObject(wallet)
+            }
         }
     }
 }

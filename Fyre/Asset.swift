@@ -28,6 +28,9 @@ protocol Asset {
     var amount: Double { get set }
     var cost: Double { get set }
     var id: UUID { get set }
+    mutating func update(amount: Double) -> Asset
+    mutating func update(cost: Double) -> Asset
+    mutating func update(cost: Double, amount: Double) -> Asset
 }
 
 struct Cash: Asset, Identifiable {
@@ -45,6 +48,24 @@ struct Cash: Asset, Identifiable {
         self.value = 1
         self.cost = amount
         self.amount = amount
+    }
+    
+    mutating func update(amount: Double) -> Asset {
+        self.amount = amount
+        self.cost = amount
+        return self as Cash
+    }
+    
+    mutating func update(cost: Double) -> Asset {
+        self.amount = cost
+        self.cost = cost
+        return self as Cash
+    }
+    
+    mutating func update(cost: Double, amount: Double) -> Asset {
+        self.amount = amount
+        self.cost = cost
+        return self as Cash
     }
 }
 
@@ -66,6 +87,22 @@ struct Stock: Asset, Identifiable {
         self.cost = cost
         self.amount = amount
     }
+    
+    mutating func update(amount: Double) -> Asset {
+        self.amount = amount
+        return self as Stock
+    }
+    
+    mutating func update(cost: Double) -> Asset {
+        self.cost = cost
+        return self as Stock
+    }
+    
+    mutating func update(cost: Double, amount: Double) -> Asset {
+        self.amount = amount
+        self.cost = cost
+        return self as Stock
+    }
 }
 
 struct Crypto: Asset, Identifiable {
@@ -83,6 +120,22 @@ struct Crypto: Asset, Identifiable {
         self.value = value
         self.cost = cost
         self.amount = amount
+    }
+    
+    mutating func update(amount: Double) -> Asset {
+        self.amount = amount
+        return self as Crypto
+    }
+    
+    mutating func update(cost: Double) -> Asset {
+        self.cost = cost
+        return self as Crypto
+    }
+    
+    mutating func update(cost: Double, amount: Double) -> Asset {
+        self.amount = amount
+        self.cost = cost
+        return self as Crypto
     }
 }
 

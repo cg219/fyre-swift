@@ -1,9 +1,9 @@
-import Foundation
 import SwiftUI
 
 class Wallet: ObservableObject {
-    @Published var title = "Wallet Name"
-    @Published var accounts:[Account]
+    @Published var accounts: [Account]
+    @Published var currentAsset: Asset? = nil
+    @Published var currentAccount: Account? = nil
 
     init() {
         var savings = Account("Ally Savings", .Savings)
