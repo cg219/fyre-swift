@@ -14,6 +14,8 @@ let assetImage: [AssetType: String] = [
 ]
 
 func editItem(asset: Asset, account: Account, wallet: Wallet) {
+    wallet.currentAsset = nil
+    wallet.currentAccount = nil
     wallet.currentAsset = asset
     wallet.currentAccount = account
     
@@ -30,13 +32,13 @@ struct AssetListView: View {
                     ForEach(account.assets, id: \.id) { asset in
                         switch asset.type {
                             case .Cash:
-                                CashItem(asset: asset as! Cash)
+                                CashItem(asset: asset)
                                     .onTapGesture { editItem(asset: asset, account: account, wallet: wallet) }
                             case .Stock:
-                                StockItem(asset: asset as! Stock)
+                                StockItem(asset: asset)
                                     .onTapGesture { editItem(asset: asset, account: account, wallet: wallet) }
                             case .Crypto:
-                                CryptoItem(asset: asset as! Crypto)
+                                CryptoItem(asset: asset)
                                     .onTapGesture { editItem(asset: asset, account: account, wallet: wallet) }
                         }
                     }
@@ -73,7 +75,7 @@ struct SectionView: View {
 }
 
 struct CashItem: View {
-    let asset: Cash
+    let asset: Asset
     
     var body: some View {
         HStack {
@@ -81,7 +83,7 @@ struct CashItem: View {
                 Image(systemName: assetImage[asset.type]!)
                     .foregroundColor(.green)
                     .font(.largeTitle)
-                Text("\(asset.currency)")
+                Text("\(asset.code)")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 Spacer()
@@ -102,7 +104,7 @@ struct CashItem: View {
 }
 
 struct StockItem: View {
-    let asset: Stock
+    let asset: Asset
     
     var body: some View {
         HStack {
@@ -125,7 +127,7 @@ struct StockItem: View {
                     .fontWeight(.medium)
                     .padding(.trailing, 10)
                 VStack(alignment: .leading) {
-                    Text("\(asset.ticker)")
+                    Text("\(asset.code)")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                     Text("\(asset.name)")
@@ -151,7 +153,7 @@ struct StockItem: View {
 }
 
 struct CryptoItem: View {
-    let asset: Crypto
+    let asset: Asset
     
     var body: some View {
         HStack {
@@ -173,7 +175,7 @@ struct CryptoItem: View {
                     .fontWeight(.medium)
                     .padding(.trailing, 10)
                 VStack(alignment: .leading) {
-                    Text("\(asset.currency)")
+                    Text("\(asset.code)")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                     Text("\(asset.name)")

@@ -19,144 +19,80 @@ enum StockSector: String {
     case Mats = "Materials"
     case Estate = "Real Estate"
     case Other = "Other"
+    case None = "None"
 }
 
-protocol Asset {
-    var name: String { get }
-    var type: AssetType { get }
-    var value: Double { get set }
-    var amount: Double { get set }
-    var cost: Double { get set }
-    var id: UUID { get set }
-    mutating func update(amount: Double) -> Asset
-    mutating func update(cost: Double) -> Asset
-    mutating func update(cost: Double, amount: Double) -> Asset
-}
-
-struct Cash: Asset, Identifiable {
+struct Asset: Identifiable {
     var id = UUID()
-    let currency: String
+    let code: String
     let name: String
-    let type: AssetType = .Cash
+    let type: AssetType
     var value: Double
     var cost: Double
-    public var amount: Double
-    
-    init(_ name: String, _ amount: Double = 0, _ currency: String = "USD") {
+    var amount: Double
+    let sector: StockSector
+
+    init(_ name: String, _ amount: Double = 0, _ code: String = "USD") {
         self.name = name
-        self.currency = currency
+        self.code = code
         self.value = 1
         self.cost = amount
         self.amount = amount
+        self.sector = .None
+        self.type = .Cash
+    }
+    
+    init(_ name: String, _ value: Double, _ code: String, _ cost: Double = 0, _ amount: Double = 0, _ sector: StockSector = StockSector.Other) {
+        self.name = name
+        self.code = code
+        self.value = value
+        self.cost = cost
+        self.amount = amount
+        self.sector = sector
+        self.type = .Stock
+    }
+    
+    init(_ name: String, _ value: Double, _ code: String, _ cost: Double = 0, _ amount: Double = 0) {
+        self.name = name
+        self.code = code
+        self.value = value
+        self.cost = cost
+        self.amount = amount
+        self.sector = .None
+        self.type = .Crypto
     }
     
     mutating func update(amount: Double) -> Asset {
         self.amount = amount
         self.cost = amount
-        return self as Cash
-    }
-    
-    mutating func update(cost: Double) -> Asset {
-        self.amount = cost
-        self.cost = cost
-        return self as Cash
+        return self
     }
     
     mutating func update(cost: Double, amount: Double) -> Asset {
         self.amount = amount
         self.cost = cost
-        return self as Cash
-    }
-}
-
-struct Stock: Asset, Identifiable {
-    var id = UUID()
-    let name: String
-    let type: AssetType = .Stock
-    let ticker: String
-    let sector: StockSector
-    var value: Double
-    var cost: Double
-    public var amount: Double
-    
-    init(_ name: String, _ value: Double, _ ticker: String, _ cost: Double = 0, _ amount: Double = 0, _ sector: StockSector = StockSector.Other) {
-        self.ticker = ticker
-        self.sector = sector
-        self.name = name
-        self.value = value
-        self.cost = cost
-        self.amount = amount
-    }
-    
-    mutating func update(amount: Double) -> Asset {
-        self.amount = amount
-        return self as Stock
-    }
-    
-    mutating func update(cost: Double) -> Asset {
-        self.cost = cost
-        return self as Stock
-    }
-    
-    mutating func update(cost: Double, amount: Double) -> Asset {
-        self.amount = amount
-        self.cost = cost
-        return self as Stock
-    }
-}
-
-struct Crypto: Asset, Identifiable {
-    var id = UUID()
-    let currency: String
-    let name: String
-    let type: AssetType = .Crypto
-    var value: Double
-    var cost: Double
-    public var amount: Double
-    
-    init(_ name: String, _ value: Double, _ currency: String, _ cost: Double = 0, _ amount: Double = 0) {
-        self.currency = currency
-        self.name = name
-        self.value = value
-        self.cost = cost
-        self.amount = amount
-    }
-    
-    mutating func update(amount: Double) -> Asset {
-        self.amount = amount
-        return self as Crypto
-    }
-    
-    mutating func update(cost: Double) -> Asset {
-        self.cost = cost
-        return self as Crypto
-    }
-    
-    mutating func update(cost: Double, amount: Double) -> Asset {
-        self.amount = amount
-        self.cost = cost
-        return self as Crypto
+        return self
     }
 }
 
 let account1:[Asset] = [
-    Stock("Apple Inc", 372.69, "AAPL", 3000, 12, .Tech),
-    Stock("Tesla", 1372.69, "TSLA", 3000, 4, .Tech),
-    Stock("Facebook", 1372.69, "FB", 3000, 19, .Tele),
-    Cash("US Dollar", 233)
+    Asset("Apple Inc", 372.69, "AAPL", 3000, 12, .Tech),
+    Asset("Tesla", 1372.69, "TSLA", 3000, 4, .Tech),
+    Asset("Facebook", 1372.69, "FB", 3000, 19, .Tele),
+    Asset("US Dollar", 233)
 ]
 
 let account2:[Asset] = [
-    Stock("Facebook", 1372.69, "FB", 1372.69, 1, .Tele),
-    Cash("US Dollar", 4312)
+    Asset("Facebook", 1372.69, "FB", 1372.69, 1, .Tele),
+    Asset("US Dollar", 4312)
 ]
 
 let account3:[Asset] = [
-    Crypto("Bitcoin", 9248.45, "BTC", 1000, 0.12),
-    Crypto("Litecoin", 43.45, "LTC", 1300, 20),
-    Crypto("Bitcoin Cash", 234.43, "BCH", 500, 2)
+    Asset("Bitcoin", 9248.45, "BTC", 1000, 0.12),
+    Asset("Litecoin", 43.45, "LTC", 1300, 20),
+    Asset("Bitcoin Cash", 234.43, "BCH", 500, 2)
 ]
 
 let account4:[Asset] = [
-    Cash("US Dollar", 19320)
+    Asset("US Dollar", 19320)
 ]
