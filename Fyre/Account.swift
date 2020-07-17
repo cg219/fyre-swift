@@ -17,11 +17,11 @@ struct AssetHolder: Identifiable {
     var price: Double
 }
 
-struct Account: Hashable {
+class Account: ObservableObject, Hashable {
     var id = UUID()
     let type: AccountType
     var name: String
-    var assets: [Asset]
+    @Published var assets: [Asset]
     var value: Double {
         var currentValue: Double = 0
         assets.forEach { asset in
@@ -57,7 +57,7 @@ struct Account: Hashable {
         return (exists, existingIndex)
     }
     
-    mutating func add(_ toAdd: Asset) {
+    func add(_ toAdd: Asset) {
         let (doesExist, assetIndex) = doesAssetExist(toAdd)
         
         if doesExist {
@@ -81,7 +81,7 @@ struct Account: Hashable {
         }
     }
     
-    mutating func add(_ toAddArray: [Asset]) {
+    func add(_ toAddArray: [Asset]) {
         toAddArray.forEach { asset in add(asset) }
     }
     

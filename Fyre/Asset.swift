@@ -61,18 +61,6 @@ struct Asset: Identifiable {
         self.sector = .None
         self.type = .Crypto
     }
-    
-    mutating func update(amount: Double) -> Asset {
-        self.amount = amount
-        self.cost = amount
-        return self
-    }
-    
-    mutating func update(cost: Double, amount: Double) -> Asset {
-        self.amount = amount
-        self.cost = cost
-        return self
-    }
 }
 
 let account1:[Asset] = [

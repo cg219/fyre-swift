@@ -15,7 +15,7 @@
 		0DB2AF2024B54E9200092945 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF1F24B54E9200092945 /* Asset.swift */; };
 		0DB2AF2224B54EBB00092945 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF2124B54EBB00092945 /* Account.swift */; };
 		0DDE1FCA24B5999A00AC6F1F /* AssetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE1FC924B5999A00AC6F1F /* AssetListView.swift */; };
-		0DDE1FCD24B63B4900AC6F1F /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE1FCC24B63B4900AC6F1F /* Wallet.swift */; };
+		0DDE1FCD24B63B4900AC6F1F /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE1FCC24B63B4900AC6F1F /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 		0DB2AF1F24B54E9200092945 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		0DB2AF2124B54EBB00092945 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		0DDE1FC924B5999A00AC6F1F /* AssetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListView.swift; sourceTree = "<group>"; };
-		0DDE1FCC24B63B4900AC6F1F /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		0DDE1FCC24B63B4900AC6F1F /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 				0D7A925C24BC2C8700C61DC5 /* EditAssetView.swift */,
 				0D77D77224BE457900D07B8D /* Extensions.swift */,
 				0DB2AF0F24B54E5C00092945 /* FyreApp.swift */,
-				0DDE1FCC24B63B4900AC6F1F /* Wallet.swift */,
+				0DDE1FCC24B63B4900AC6F1F /* UserData.swift */,
 				0DB2AF1324B54E5D00092945 /* Assets.xcassets */,
 				0DB2AF1824B54E5D00092945 /* Info.plist */,
 				0DB2AF1924B54E5D00092945 /* Fyre.entitlements */,
@@ -156,7 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DB2AF2024B54E9200092945 /* Asset.swift in Sources */,
-				0DDE1FCD24B63B4900AC6F1F /* Wallet.swift in Sources */,
+				0DDE1FCD24B63B4900AC6F1F /* UserData.swift in Sources */,
 				0DB2AF2224B54EBB00092945 /* Account.swift in Sources */,
 				0DB2AF1024B54E5C00092945 /* FyreApp.swift in Sources */,
 				0D7A925D24BC2C8700C61DC5 /* EditAssetView.swift in Sources */,

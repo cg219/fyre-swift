@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct AssetListView_Previews: PreviewProvider {
-    static var previews: some View {
-        AssetListView()
-            .environmentObject(Wallet())
-    }
-}
+//struct AssetListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AssetListView()
+//            .environmentObject(UserData())
+//    }
+//}
 
 let assetImage: [AssetType: String] = [
     AssetType.Cash: "dollarsign.square.fill",
@@ -13,33 +13,47 @@ let assetImage: [AssetType: String] = [
     AssetType.Stock: "mail.fill"
 ]
 
-func editItem(asset: Asset, account: Account, wallet: Wallet) {
-    wallet.currentAsset = nil
-    wallet.currentAccount = nil
-    wallet.currentAsset = asset
-    wallet.currentAccount = account
+func sendAssets(_ asset: Asset, _ account: Account, _ userData: UserData) {
+    let accountIndex: Int = userData.accounts.firstIndex(where: { $0.id == account.id })!
+    let assetIndex: Int = userData.accounts[accountIndex].assets.firstIndex(where: { $0.id == asset.id})!
     
-    print("\(asset)")
+    userData.edited = (accountIndex, assetIndex)
 }
 
 struct AssetListView: View {
-    @EnvironmentObject var wallet: Wallet
+    @EnvironmentObject var userData: UserData
+    @Binding var showEdit: Bool
     
     var body: some View {
         List {
-            ForEach(wallet.accounts, id: \.self) { account in
+            ForEach(userData.accounts, id: \.self) { account in
                 Section(header: SectionView(account: account)) {
                     ForEach(account.assets, id: \.id) { asset in
                         switch asset.type {
                             case .Cash:
                                 CashItem(asset: asset)
-                                    .onTapGesture { editItem(asset: asset, account: account, wallet: wallet) }
+                                    .onTapGesture {
+                                        sendAssets(asset, account, userData)
+                                        withAnimation(.easeInOut(duration: 0.5)) {
+                                            showEdit = true
+                                        }
+                                    }
                             case .Stock:
                                 StockItem(asset: asset)
-                                    .onTapGesture { editItem(asset: asset, account: account, wallet: wallet) }
+                                    .onTapGesture {
+                                        sendAssets(asset, account, userData)
+                                        withAnimation(.easeInOut(duration: 0.5)) {
+                                            showEdit = true
+                                        }
+                                    }
                             case .Crypto:
                                 CryptoItem(asset: asset)
-                                    .onTapGesture { editItem(asset: asset, account: account, wallet: wallet) }
+                                    .onTapGesture {
+                                        sendAssets(asset, account, userData)
+                                        withAnimation(.easeInOut(duration: 0.5)) {
+                                            showEdit = true
+                                        }
+                                    }
                         }
                     }
                     .cornerRadius(10)
@@ -52,7 +66,7 @@ struct AssetListView: View {
 }
 
 struct SectionView: View {
-    let account: Account
+    @ObservedObject var account: Account
     
     var body: some View {
         HStack(alignment: .bottom) {

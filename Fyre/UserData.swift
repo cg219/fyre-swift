@@ -1,9 +1,8 @@
 import SwiftUI
 
-class Wallet: ObservableObject {
+class UserData: ObservableObject {
     @Published var accounts: [Account]
-    @Published var currentAsset: Asset? = nil
-    @Published var currentAccount: Account? = nil
+    @Published var edited: (Int, Int) = (0, 0)
 
     init() {
         var savings = Account("Ally Savings", .Savings)

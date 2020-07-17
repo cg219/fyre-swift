@@ -11,9 +11,10 @@ extension NumberFormatter {
         return formatter
     }
     
-    static var double: NumberFormatter {
+    static var normal: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
+        formatter.hasThousandSeparators = false
         return formatter
     }
  }

@@ -2,17 +2,18 @@ import SwiftUI
 
 @main
 struct FyreApp: App {
-    @StateObject var wallet = Wallet()
+    @StateObject var userData = UserData()
+    @State var showEdit = false
         
     var body: some Scene {
         WindowGroup {
             HStack {
-                if wallet.currentAsset != nil {
-                    EditAssetView()
-                        .environmentObject(wallet)
+                if showEdit {
+                    EditAssetView(show: $showEdit)
+                        .environmentObject(userData)
                 }
-                AssetListView()
-                    .environmentObject(wallet)
+                AssetListView(showEdit: $showEdit)
+                    .environmentObject(userData)
             }
         }
     }
