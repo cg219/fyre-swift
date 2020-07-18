@@ -1,4 +1,5 @@
 import Foundation
+import CoreData
 
 enum AccountType {
     case Savings
@@ -8,13 +9,6 @@ enum AccountType {
     case Digital
     case Lender
     case Property
-}
-
-struct AssetHolder: Identifiable {
-    var id = UUID()
-    var asset: Asset
-    var amount: Double
-    var price: Double
 }
 
 class Account: ObservableObject, Hashable {
