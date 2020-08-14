@@ -1,14 +1,14 @@
 import Foundation
 import CoreData
 
-enum AccountType {
-    case Savings
-    case Checkings
-    case Retirement
-    case Brokerage
-    case Digital
-    case Lender
-    case Property
+enum AccountType: String {
+    case Savings = "Savings"
+    case Checkings = "Checkings"
+    case Retirement = "Retirement"
+    case Brokerage = "Brokerage"
+    case Digital = "Digital"
+    case Lender = "Lender"
+    case Property = "Property"
 }
 
 class Account: ObservableObject, Hashable {

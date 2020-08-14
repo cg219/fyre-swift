@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreData
 
 @main
 struct FyreApp: App {
@@ -7,13 +8,23 @@ struct FyreApp: App {
         
     var body: some Scene {
         WindowGroup {
-            HStack {
-                if showEdit {
-                    EditAssetView(show: $showEdit)
-                        .environmentObject(userData)
+            VStack {
+                HStack {
+                    Text("Add Account")
+                    Button(action: userData.addAccount) {
+                        Image(systemName: "plus.app.fill")
+                    }
                 }
-                AssetListView(showEdit: $showEdit)
-                    .environmentObject(userData)
+                HStack {
+                    if showEdit {
+                        EditAssetView(show: $showEdit)
+                            .environmentObject(userData)
+                    }
+                    AssetListView(showEdit: $showEdit)
+                        .environmentObject(userData)
+                        .environment(\.managedObjectContext, userData.store.container.viewContext)
+                }
+                
             }
         }
     }

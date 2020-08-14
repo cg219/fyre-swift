@@ -61,6 +61,17 @@ struct Asset: Identifiable {
         self.sector = .None
         self.type = .Crypto
     }
+    
+    init(_ name: String, _ id: UUID, _ code: String, _ value: Double, _ cost: Double, _ amount: Double, _ sector: StockSector, _ type: AssetType) {
+        self.name = name
+        self.code = code
+        self.value = value
+        self.cost = cost
+        self.amount = amount
+        self.sector = sector
+        self.type = type
+        self.id = id
+    }
 }
 
 let account1:[Asset] = [
