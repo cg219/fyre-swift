@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-enum AccountType: String {
+public enum AccountType: String, CaseIterable, Equatable {
     case Savings = "Savings"
     case Checkings = "Checkings"
     case Retirement = "Retirement"

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D4FC44124E0F684004B8FE0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4FC44024E0F684004B8FE0 /* Store.swift */; };
-		0D6D61F624C27EFA00D7A84A /* FyreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D61F424C27EFA00D7A84A /* FyreData.xcdatamodeld */; };
+		0D6D61F624C27EFA00D7A84A /* TestData1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D61F424C27EFA00D7A84A /* TestData1.xcdatamodeld */; };
 		0D77D77324BE457900D07B8D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D77D77224BE457900D07B8D /* Extensions.swift */; };
 		0D7A925D24BC2C8700C61DC5 /* EditAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7A925C24BC2C8700C61DC5 /* EditAssetView.swift */; };
 		0DB2AF1024B54E5C00092945 /* FyreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF0F24B54E5C00092945 /* FyreApp.swift */; };
@@ -16,6 +16,7 @@
 		0DB2AF1724B54E5D00092945 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2AF1624B54E5D00092945 /* Preview Assets.xcassets */; };
 		0DB2AF2024B54E9200092945 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF1F24B54E9200092945 /* Asset.swift */; };
 		0DB2AF2224B54EBB00092945 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF2124B54EBB00092945 /* Account.swift */; };
+		0DBF760A24E833BE008C8918 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF760924E833BE008C8918 /* AddAccountView.swift */; };
 		0DDE1FCA24B5999A00AC6F1F /* AssetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE1FC924B5999A00AC6F1F /* AssetListView.swift */; };
 		0DDE1FCD24B63B4900AC6F1F /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE1FCC24B63B4900AC6F1F /* UserData.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,7 @@
 		0DB2AF1924B54E5D00092945 /* Fyre.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fyre.entitlements; sourceTree = "<group>"; };
 		0DB2AF1F24B54E9200092945 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		0DB2AF2124B54EBB00092945 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		0DBF760924E833BE008C8918 /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
 		0DDE1FC924B5999A00AC6F1F /* AssetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListView.swift; sourceTree = "<group>"; };
 		0DDE1FCC24B63B4900AC6F1F /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,13 +75,14 @@
 				0D7A925C24BC2C8700C61DC5 /* EditAssetView.swift */,
 				0D77D77224BE457900D07B8D /* Extensions.swift */,
 				0DB2AF0F24B54E5C00092945 /* FyreApp.swift */,
+				0DBF760924E833BE008C8918 /* AddAccountView.swift */,
 				0D4FC44024E0F684004B8FE0 /* Store.swift */,
 				0DDE1FCC24B63B4900AC6F1F /* UserData.swift */,
 				0DB2AF1324B54E5D00092945 /* Assets.xcassets */,
 				0DB2AF1824B54E5D00092945 /* Info.plist */,
 				0DB2AF1924B54E5D00092945 /* Fyre.entitlements */,
 				0DB2AF1524B54E5D00092945 /* Preview Content */,
-				0D6D61F424C27EFA00D7A84A /* FyreData.xcdatamodeld */,
+				0D6D61F424C27EFA00D7A84A /* TestData1.xcdatamodeld */,
 			);
 			path = Fyre;
 			sourceTree = "<group>";
@@ -163,8 +166,9 @@
 			files = (
 				0DB2AF2024B54E9200092945 /* Asset.swift in Sources */,
 				0DDE1FCD24B63B4900AC6F1F /* UserData.swift in Sources */,
+				0DBF760A24E833BE008C8918 /* AddAccountView.swift in Sources */,
 				0DB2AF2224B54EBB00092945 /* Account.swift in Sources */,
-				0D6D61F624C27EFA00D7A84A /* FyreData.xcdatamodeld in Sources */,
+				0D6D61F624C27EFA00D7A84A /* TestData1.xcdatamodeld in Sources */,
 				0DB2AF1024B54E5C00092945 /* FyreApp.swift in Sources */,
 				0D7A925D24BC2C8700C61DC5 /* EditAssetView.swift in Sources */,
 				0DDE1FCA24B5999A00AC6F1F /* AssetListView.swift in Sources */,
@@ -363,13 +367,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0D6D61F424C27EFA00D7A84A /* FyreData.xcdatamodeld */ = {
+		0D6D61F424C27EFA00D7A84A /* TestData1.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				0D6D61F524C27EFA00D7A84A /* Model.xcdatamodel */,
 			);
 			currentVersion = 0D6D61F524C27EFA00D7A84A /* Model.xcdatamodel */;
-			path = FyreData.xcdatamodeld;
+			path = TestData1.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

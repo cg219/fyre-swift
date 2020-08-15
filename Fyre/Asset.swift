@@ -22,7 +22,7 @@ enum StockSector: String {
     case None = "None"
 }
 
-struct Asset: Identifiable {
+struct Asset: Identifiable, Hashable {
     var id = UUID()
     let code: String
     let name: String
@@ -71,6 +71,15 @@ struct Asset: Identifiable {
         self.sector = sector
         self.type = type
         self.id = id
+    }
+    
+    // Protocol Methods
+    static func == (lhs: Asset, rhs:Asset) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
 

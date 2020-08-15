@@ -1,12 +1,5 @@
 import SwiftUI
 
-//struct AssetListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AssetListView()
-//            .environmentObject(UserData())
-//    }
-//}
-
 let assetImage: [AssetType: String] = [
     AssetType.Cash: "dollarsign.square.fill",
     AssetType.Crypto: "bitcoinsign.square.fill",
@@ -27,36 +20,38 @@ struct AssetListView: View {
     var body: some View {
         List {
             ForEach(userData.accounts, id: \.self) { account in
-                Section(header: SectionView(account: account)) {
-                    ForEach(account.assets, id: \.id) { asset in
-                        switch asset.type {
-                            case .Cash:
-                                CashItem(asset: asset)
-                                    .onTapGesture {
-                                        sendAssets(asset, account, userData)
-                                        withAnimation(.easeInOut(duration: 0.5)) {
-                                            showEdit = true
+                Section(header: SectionView(account: account, userData: userData)) {
+                    VStack {
+                        ForEach(account.assets, id: \.self) { asset in
+                            switch asset.type {
+                                case .Cash:
+                                    CashItem(asset: asset)
+                                        .onTapGesture {
+                                            sendAssets(asset, account, userData)
+                                            withAnimation(.easeInOut(duration: 0.5)) {
+                                                showEdit = true
+                                            }
                                         }
-                                    }
-                            case .Stock:
-                                StockItem(asset: asset)
-                                    .onTapGesture {
-                                        sendAssets(asset, account, userData)
-                                        withAnimation(.easeInOut(duration: 0.5)) {
-                                            showEdit = true
+                                case .Stock:
+                                    StockItem(asset: asset)
+                                        .onTapGesture {
+                                            sendAssets(asset, account, userData)
+                                            withAnimation(.easeInOut(duration: 0.5)) {
+                                                showEdit = true
+                                            }
                                         }
-                                    }
-                            case .Crypto:
-                                CryptoItem(asset: asset)
-                                    .onTapGesture {
-                                        sendAssets(asset, account, userData)
-                                        withAnimation(.easeInOut(duration: 0.5)) {
-                                            showEdit = true
+                                case .Crypto:
+                                    CryptoItem(asset: asset)
+                                        .onTapGesture {
+                                            sendAssets(asset, account, userData)
+                                            withAnimation(.easeInOut(duration: 0.5)) {
+                                                showEdit = true
+                                            }
                                         }
-                                    }
+                            }
                         }
+                        .cornerRadius(10)
                     }
-                    .cornerRadius(10)
                 }
             }
         }
@@ -67,6 +62,7 @@ struct AssetListView: View {
 
 struct SectionView: View {
     @ObservedObject var account: Account
+    var userData: UserData
     
     var body: some View {
         HStack(alignment: .bottom) {
@@ -76,11 +72,16 @@ struct SectionView: View {
                 .padding(.top, 5)
                 .textCase(.uppercase)
             Spacer()
-            Text("$\(account.value.currency)")
-                .font(.title2)
-                .fontWeight(.medium)
-                .foregroundColor(.green)
-                .kerning(0.6)
+            VStack {
+                Button("Delete") {
+                    userData.deleteAccount(account: account)
+                }
+                Text("$\(account.value.currency)")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .foregroundColor(.green)
+                    .kerning(0.6)
+            }
         }
         .padding(.all, 10)
         .padding(.top, 20)
