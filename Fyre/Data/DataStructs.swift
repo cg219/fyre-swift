@@ -1,25 +1,19 @@
 import Foundation
 
-enum AssetType: String {
-    case Stock = "Stock"
-    case Cash = "Cash"
-    case Crypto = "Crypto"
+struct NewAccount {
+    var name: String = ""
+    var type: AccountType = .Savings
 }
 
-enum StockSector: String {
-    case Financials = "Financials"
-    case Utils = "Utilities"
-    case Disc = "Consumer Discretionary"
-    case Staples = "Consumer Staples"
-    case Energy = "Energy"
-    case Health = "Health Care"
-    case Industrials = "Industrials"
-    case Tech = "Technology"
-    case Tele = "Telecom"
-    case Mats = "Materials"
-    case Estate = "Real Estate"
-    case Other = "Other"
-    case None = "None"
+struct NewAsset {
+    var name: String = ""
+    var code: String = ""
+    var type: AssetType = .Cash
+    var value: Double = 0
+    var cost: Double = 0
+    var amount: Double = 0
+    var sector: StockSector = .None
+    var account: Int = 0
 }
 
 struct Asset: Identifiable, Hashable {
@@ -82,25 +76,3 @@ struct Asset: Identifiable, Hashable {
         hasher.combine(id)
     }
 }
-
-let account1:[Asset] = [
-    Asset("Apple Inc", 372.69, "AAPL", 3000, 12, .Tech),
-    Asset("Tesla", 1372.69, "TSLA", 3000, 4, .Tech),
-    Asset("Facebook", 1372.69, "FB", 3000, 19, .Tele),
-    Asset("US Dollar", 233)
-]
-
-let account2:[Asset] = [
-    Asset("Facebook", 1372.69, "FB", 1372.69, 1, .Tele),
-    Asset("US Dollar", 4312)
-]
-
-let account3:[Asset] = [
-    Asset("Bitcoin", 9248.45, "BTC", 1000, 0.12),
-    Asset("Litecoin", 43.45, "LTC", 1300, 20),
-    Asset("Bitcoin Cash", 234.43, "BCH", 500, 2)
-]
-
-let account4:[Asset] = [
-    Asset("US Dollar", 19320)
-]

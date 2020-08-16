@@ -1,65 +1,5 @@
 import SwiftUI
 
-let assetImage: [AssetType: String] = [
-    AssetType.Cash: "dollarsign.square.fill",
-    AssetType.Crypto: "bitcoinsign.square.fill",
-    AssetType.Stock: "mail.fill"
-]
-
-func sendAssets(_ asset: Asset, _ account: Account, _ userData: UserData) {
-    let accountIndex: Int = userData.accounts.firstIndex(where: { $0.id == account.id })!
-    let assetIndex: Int = userData.accounts[accountIndex].assets.firstIndex(where: { $0.id == asset.id})!
-    
-    userData.edited = (accountIndex, assetIndex)
-}
-
-struct AssetListView: View {
-    @EnvironmentObject var userData: UserData
-    @Binding var showEdit: Bool
-    
-    var body: some View {
-        List {
-            ForEach(userData.accounts, id: \.self) { account in
-                Section(header: SectionView(account: account, userData: userData)) {
-                    VStack {
-                        ForEach(account.assets, id: \.self) { asset in
-                            switch asset.type {
-                                case .Cash:
-                                    CashItem(asset: asset)
-                                        .onTapGesture {
-                                            sendAssets(asset, account, userData)
-                                            withAnimation(.easeInOut(duration: 0.5)) {
-                                                showEdit = true
-                                            }
-                                        }
-                                case .Stock:
-                                    StockItem(asset: asset)
-                                        .onTapGesture {
-                                            sendAssets(asset, account, userData)
-                                            withAnimation(.easeInOut(duration: 0.5)) {
-                                                showEdit = true
-                                            }
-                                        }
-                                case .Crypto:
-                                    CryptoItem(asset: asset)
-                                        .onTapGesture {
-                                            sendAssets(asset, account, userData)
-                                            withAnimation(.easeInOut(duration: 0.5)) {
-                                                showEdit = true
-                                            }
-                                        }
-                            }
-                        }
-                        .cornerRadius(10)
-                    }
-                }
-            }
-        }
-        .listStyle(PlainListStyle())
-        
-    }
-}
-
 struct SectionView: View {
     @ObservedObject var account: Account
     var userData: UserData
@@ -71,17 +11,17 @@ struct SectionView: View {
                 .fontWeight(.bold)
                 .padding(.top, 5)
                 .textCase(.uppercase)
-            Spacer()
-            VStack {
+            HStack {
                 Button("Delete") {
                     userData.deleteAccount(account: account)
                 }
-                Text("$\(account.value.currency)")
-                    .font(.title2)
-                    .fontWeight(.medium)
-                    .foregroundColor(.green)
-                    .kerning(0.6)
             }
+            Spacer()
+            Text("$\(account.value.currency)")
+                .font(.title2)
+                .fontWeight(.medium)
+                .foregroundColor(.green)
+                .kerning(0.6)
         }
         .padding(.all, 10)
         .padding(.top, 20)
@@ -215,3 +155,4 @@ struct CryptoItem: View {
         .background(Color.white)
     }
 }
+

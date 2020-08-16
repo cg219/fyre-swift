@@ -6,6 +6,7 @@ struct FyreApp: App {
     @StateObject var userData = UserData()
     @State private var showEdit = false
     @State private var isPresented = false
+    @State private var currentSheet: ActiveSheet = .AddAccount
         
     var body: some Scene {
         WindowGroup {
@@ -13,26 +14,32 @@ struct FyreApp: App {
                 HStack {
                     Spacer()
                     Button("Add Account") {
-                        self.isPresented = true
+                        currentSheet = .AddAccount
+                        isPresented = true
+                    }
+                    Button("Add Asset") {
+                        currentSheet = .AddAsset
+                        isPresented = true
                     }
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)
-                
-                HStack {
-                    if showEdit {
-                        EditAssetView(show: $showEdit)
+                .sheet(isPresented: $isPresented) {
+                    if currentSheet == .AddAccount {
+                        AddAccountView(isShowing: $isPresented)
+                            .environmentObject(userData)
+                    } else {
+                        AddAssetView(isShowing: $isPresented)
                             .environmentObject(userData)
                     }
-                    AssetListView(showEdit: $showEdit)
+                }
+                
+                HStack {
+                    AssetListView()
                         .environmentObject(userData)
                         .environment(\.managedObjectContext, userData.store.container.viewContext)
                 }
                 
-            }
-            .sheet(isPresented: $isPresented) {
-                AddAccountView(isShowing: $isPresented)
-                    .environmentObject(userData)
             }
         }
     }

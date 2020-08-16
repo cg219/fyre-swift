@@ -10,33 +10,37 @@
 		0D4FC44124E0F684004B8FE0 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4FC44024E0F684004B8FE0 /* Store.swift */; };
 		0D6D61F624C27EFA00D7A84A /* TestData1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D61F424C27EFA00D7A84A /* TestData1.xcdatamodeld */; };
 		0D77D77324BE457900D07B8D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D77D77224BE457900D07B8D /* Extensions.swift */; };
-		0D7A925D24BC2C8700C61DC5 /* EditAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7A925C24BC2C8700C61DC5 /* EditAssetView.swift */; };
-		0DB2AF1024B54E5C00092945 /* FyreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF0F24B54E5C00092945 /* FyreApp.swift */; };
+		0D91EDB524E8B04200B243B2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EDB424E8B04200B243B2 /* Enums.swift */; };
+		0D91EDB724E8B68A00B243B2 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EDB624E8B68A00B243B2 /* MockData.swift */; };
+		0D91EDB924E8B71400B243B2 /* DataStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EDB824E8B71400B243B2 /* DataStructs.swift */; };
+		0D91EDBB24E8B77D00B243B2 /* SheetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EDBA24E8B77D00B243B2 /* SheetViews.swift */; };
+		0D91EDBD24E8B83D00B243B2 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EDBC24E8B83D00B243B2 /* Global.swift */; };
+		0D91EDBF24E8B86D00B243B2 /* ChildViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EDBE24E8B86D00B243B2 /* ChildViews.swift */; };
+		0D91EDC124E8B8CC00B243B2 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EDC024E8B8CC00B243B2 /* Views.swift */; };
+		0D91EDC324E8B92200B243B2 /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EDC224E8B92200B243B2 /* DataManagement.swift */; };
+		0DB2AF1024B54E5C00092945 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF0F24B54E5C00092945 /* Main.swift */; };
 		0DB2AF1424B54E5D00092945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2AF1324B54E5D00092945 /* Assets.xcassets */; };
 		0DB2AF1724B54E5D00092945 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2AF1624B54E5D00092945 /* Preview Assets.xcassets */; };
-		0DB2AF2024B54E9200092945 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF1F24B54E9200092945 /* Asset.swift */; };
-		0DB2AF2224B54EBB00092945 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2AF2124B54EBB00092945 /* Account.swift */; };
-		0DBF760A24E833BE008C8918 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF760924E833BE008C8918 /* AddAccountView.swift */; };
-		0DDE1FCA24B5999A00AC6F1F /* AssetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE1FC924B5999A00AC6F1F /* AssetListView.swift */; };
-		0DDE1FCD24B63B4900AC6F1F /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDE1FCC24B63B4900AC6F1F /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D4FC44024E0F684004B8FE0 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		0D6D61F524C27EFA00D7A84A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0D77D77224BE457900D07B8D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		0D7A925C24BC2C8700C61DC5 /* EditAssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAssetView.swift; sourceTree = "<group>"; };
+		0D91EDB424E8B04200B243B2 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		0D91EDB624E8B68A00B243B2 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		0D91EDB824E8B71400B243B2 /* DataStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructs.swift; sourceTree = "<group>"; };
+		0D91EDBA24E8B77D00B243B2 /* SheetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViews.swift; sourceTree = "<group>"; };
+		0D91EDBC24E8B83D00B243B2 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		0D91EDBE24E8B86D00B243B2 /* ChildViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViews.swift; sourceTree = "<group>"; };
+		0D91EDC024E8B8CC00B243B2 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		0D91EDC224E8B92200B243B2 /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
 		0DB2AF0C24B54E5C00092945 /* Fyre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fyre.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0DB2AF0F24B54E5C00092945 /* FyreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyreApp.swift; sourceTree = "<group>"; };
+		0DB2AF0F24B54E5C00092945 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		0DB2AF1324B54E5D00092945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DB2AF1624B54E5D00092945 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0DB2AF1824B54E5D00092945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DB2AF1924B54E5D00092945 /* Fyre.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fyre.entitlements; sourceTree = "<group>"; };
-		0DB2AF1F24B54E9200092945 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
-		0DB2AF2124B54EBB00092945 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		0DBF760924E833BE008C8918 /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
-		0DDE1FC924B5999A00AC6F1F /* AssetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListView.swift; sourceTree = "<group>"; };
-		0DDE1FCC24B63B4900AC6F1F /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D91EDC424E8B97E00B243B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D91EDBE24E8B86D00B243B2 /* ChildViews.swift */,
+				0D91EDBA24E8B77D00B243B2 /* SheetViews.swift */,
+				0D91EDC024E8B8CC00B243B2 /* Views.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D91EDC524E8B99A00B243B2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0D91EDB824E8B71400B243B2 /* DataStructs.swift */,
+				0D91EDC224E8B92200B243B2 /* DataManagement.swift */,
+				0D91EDB624E8B68A00B243B2 /* MockData.swift */,
+				0D6D61F424C27EFA00D7A84A /* TestData1.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		0DB2AF0324B54E5C00092945 = {
 			isa = PBXGroup;
 			children = (
@@ -69,20 +94,17 @@
 		0DB2AF0E24B54E5C00092945 /* Fyre */ = {
 			isa = PBXGroup;
 			children = (
-				0DB2AF2124B54EBB00092945 /* Account.swift */,
-				0DB2AF1F24B54E9200092945 /* Asset.swift */,
-				0DDE1FC924B5999A00AC6F1F /* AssetListView.swift */,
-				0D7A925C24BC2C8700C61DC5 /* EditAssetView.swift */,
+				0DB2AF0F24B54E5C00092945 /* Main.swift */,
+				0D91EDBC24E8B83D00B243B2 /* Global.swift */,
 				0D77D77224BE457900D07B8D /* Extensions.swift */,
-				0DB2AF0F24B54E5C00092945 /* FyreApp.swift */,
-				0DBF760924E833BE008C8918 /* AddAccountView.swift */,
+				0D91EDB424E8B04200B243B2 /* Enums.swift */,
+				0D91EDC524E8B99A00B243B2 /* Data */,
+				0D91EDC424E8B97E00B243B2 /* Views */,
 				0D4FC44024E0F684004B8FE0 /* Store.swift */,
-				0DDE1FCC24B63B4900AC6F1F /* UserData.swift */,
 				0DB2AF1324B54E5D00092945 /* Assets.xcassets */,
 				0DB2AF1824B54E5D00092945 /* Info.plist */,
 				0DB2AF1924B54E5D00092945 /* Fyre.entitlements */,
 				0DB2AF1524B54E5D00092945 /* Preview Content */,
-				0D6D61F424C27EFA00D7A84A /* TestData1.xcdatamodeld */,
 			);
 			path = Fyre;
 			sourceTree = "<group>";
@@ -164,16 +186,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DB2AF2024B54E9200092945 /* Asset.swift in Sources */,
-				0DDE1FCD24B63B4900AC6F1F /* UserData.swift in Sources */,
-				0DBF760A24E833BE008C8918 /* AddAccountView.swift in Sources */,
-				0DB2AF2224B54EBB00092945 /* Account.swift in Sources */,
+				0D91EDB724E8B68A00B243B2 /* MockData.swift in Sources */,
 				0D6D61F624C27EFA00D7A84A /* TestData1.xcdatamodeld in Sources */,
-				0DB2AF1024B54E5C00092945 /* FyreApp.swift in Sources */,
-				0D7A925D24BC2C8700C61DC5 /* EditAssetView.swift in Sources */,
-				0DDE1FCA24B5999A00AC6F1F /* AssetListView.swift in Sources */,
+				0DB2AF1024B54E5C00092945 /* Main.swift in Sources */,
+				0D91EDBD24E8B83D00B243B2 /* Global.swift in Sources */,
+				0D91EDC324E8B92200B243B2 /* DataManagement.swift in Sources */,
+				0D91EDBF24E8B86D00B243B2 /* ChildViews.swift in Sources */,
+				0D91EDC124E8B8CC00B243B2 /* Views.swift in Sources */,
 				0D4FC44124E0F684004B8FE0 /* Store.swift in Sources */,
 				0D77D77324BE457900D07B8D /* Extensions.swift in Sources */,
+				0D91EDB524E8B04200B243B2 /* Enums.swift in Sources */,
+				0D91EDBB24E8B77D00B243B2 /* SheetViews.swift in Sources */,
+				0D91EDB924E8B71400B243B2 /* DataStructs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
